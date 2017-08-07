@@ -27,15 +27,13 @@ var Layout = function () {
             if (content.height() < available_height) {
                 content.css('min-height', available_height);
             }
-        }
-        else {
+        } else {
             if (body.hasClass('page-sidebar-fixed')) {
                 height = _calculateFixedSidebarViewportHeight();
                 if (body.hasClass('page-footer-fixed') === false) {
                     height = height - $('.page-footer').outerHeight();
                 }
-            }
-            else {
+            } else {
                 var headerHeight = $('.page-header').outerHeight();
                 var footerHeight = $('.page-footer').outerHeight();
 
@@ -46,11 +44,7 @@ var Layout = function () {
                 }
 
                 if ((height + headerHeight + footerHeight) <= App.getViewPort().height) {
-                    if (App.getViewPort().width < resBreakpointMd) {
-                        height = App.getViewPort().height - headerHeight - footerHeight;
-                    } else {
-                        height = App.getViewPort().height - headerHeight - footerHeight+68;
-                    }
+                    height = App.getViewPort().height - headerHeight - footerHeight;
                 }
             }
             content.css('min-height', height);
@@ -452,7 +446,7 @@ var Layout = function () {
 
     // Handles the go to top button at the footer
     var handleGoTop = function () {
-        var offset = 0;
+        var offset = 300;
         var duration = 500;
 
         if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {  // ios supported
@@ -585,7 +579,8 @@ var Layout = function () {
                 dataType: "html",
                 success: function (res) {    
                     App.stopPageLoading();
-                                    
+                    pageContent.html(res);
+
                     for (var i = 0; i < ajaxContentSuccessCallbacks.length; i++) {
                         ajaxContentSuccessCallbacks[i].call(res);
                     }
@@ -593,8 +588,7 @@ var Layout = function () {
                     if (sidebarMenuLink.size() > 0 && sidebarMenuLink.parents('li.open').size() === 0) {
                         $('.page-sidebar-menu > li.open > a').click();
                     }
-
-                    pageContent.html(res);
+                    
                     Layout.fixContentHeight(); // fix content height
                     App.initAjax(); // initialize core stuff
                 },
@@ -603,7 +597,7 @@ var Layout = function () {
                     pageContent.html('<h4>Could not load the requested content.</h4>');
 
                     for (var i = 0; i < ajaxContentErrorCallbacks.length; i++) {
-                        ajaxContentSuccessCallbacks[i].call(res);
+                        ajaxContentErrorCallbacks[i].call(res);
                     }                    
                 }
             });
