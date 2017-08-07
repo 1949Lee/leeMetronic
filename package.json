@@ -1,0 +1,22 @@
+{
+  "name": "lee-mmetronic",
+  "version": "1.0.0",
+  "description": "Metronic V4.7.5 assets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1949Lee/leeMetronic.git"
+  },
+  "keywords": [
+    "metronic"
+  ],
+  "author": "lee1949",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1949Lee/leeMetronic/issues"
+  },
+  "homepage": "https://github.com/1949Lee/leeMetronic#readme"
+}
