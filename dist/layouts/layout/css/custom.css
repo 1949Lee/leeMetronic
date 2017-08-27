@@ -1,4 +1,4 @@
-/* here you can put your own css to customize and override the theme */
+﻿/* here you can put your own css to customize and override the theme */
 /* cyrillic-ext */
 @font-face {
     font-family: 'Open Sans';
@@ -491,5 +491,9 @@
     margin-right:5px;
 }
 .btn-group.pull-right > .btn:last-child{
+    margin-right:0px;
+}
+
+.md-checkbox.col{
     margin-right:0px;
 }
